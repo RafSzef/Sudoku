@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c059169a-ddec-4b2e-a23c-4fa2eabc9098" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1WhbPVH0HpJqQJUvfig5lH5Zr8q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Sudoku" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c059169a-ddec-4b2e-a23c-4fa2eabc9098" name="Default Changelist" comment="" />
+      <created>1579604749407</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579604749407</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="73" y="180" key="#Project_Structure" timestamp="1579621868109">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="73" y="180" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1579621868109" />
+    <state x="111" y="250" key="#com.intellij.ide.util.ExportDialog" timestamp="1579622043495">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="111" y="250" key="#com.intellij.ide.util.ExportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579622043495" />
+    <state x="286" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1579629217107">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="286" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579629217107" />
+    <state x="691" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579800279242">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="691" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579800279242" />
+    <state width="1878" height="74" key="GridCell.Tab.0.bottom" timestamp="1579872215125">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="74" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579872215125" />
+    <state width="1878" height="74" key="GridCell.Tab.0.center" timestamp="1579872215125">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="74" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579872215125" />
+    <state width="1878" height="74" key="GridCell.Tab.0.left" timestamp="1579872215125">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="74" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579872215125" />
+    <state width="1878" height="74" key="GridCell.Tab.0.right" timestamp="1579872215125">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="74" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579872215125" />
+    <state x="0" y="164" key="SettingsEditor" timestamp="1579632120035">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579632120035" />
+    <state x="661" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1579860975855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="661" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579860975855" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1579633860606">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579633860606" />
+  </component>
+</project>
