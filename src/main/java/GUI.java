@@ -16,8 +16,8 @@ public class GUI extends JFrame {
     public int mouseX = -100;
     public int mouseY = -100;
     int spacing = 5;
-    int topMargin = this.getHeight()/12;
-    int bottomMargin = this.getHeight()/12;
+    int topMargin = this.getHeight()/11;
+    int bottomMargin = this.getHeight()/11;
     Random rand = new Random();
 
     private Integer[] firstLine = {1,2,3,4,5,6,7,8,9};
@@ -67,7 +67,7 @@ public class GUI extends JFrame {
     }
 
     public  int boxHeight(){
-        int boxHeight =(this.getHeight() - 2*spacing)/13;
+        int boxHeight =(this.getHeight() - 2*spacing)/11;
         return boxHeight;
     }
 
@@ -84,12 +84,15 @@ public class GUI extends JFrame {
 
 
             for (int i =0; i < 9; i++) {
-                for (int j =0; j<9 ;j++) {
+                for (int j =0; j<10 ;j++) {
                     if (mouseX >= 2*spacing+i*boxWidth()+spacing && mouseX <2*spacing+i*boxWidth()+boxWidth()-spacing
-                            && mouseY >=2*spacing+j*boxHeight()+50+26+spacing && mouseY <2*spacing+j*boxHeight()+50+26+boxHeight()-spacing)
+                            && mouseY >= boxHeight() + j * boxHeight() -spacing && mouseY < 2* boxHeight() + boxHeight()*j - 2*spacing)
                     {
                         g.setColor(DarkSeaGreen);
-                        g.fillRect(2 * spacing + i * boxWidth(), 2 * spacing + j * boxHeight ()+ 50, boxWidth ()- 2 * spacing, boxHeight() - 2 * spacing);
+                        g.fillRect(2 * spacing + i * boxWidth(),
+                                boxHeight()/2 + j * boxHeight (),
+                                boxWidth ()- 2 * spacing,
+                                boxHeight() - 2 * spacing);
                     }/*
                     if(inputMatrix[i][j] == boardMatrix[i][j]){
                         g.setColor(Color.red);
@@ -98,44 +101,65 @@ public class GUI extends JFrame {
                     */
                     else if ( i<3 &&  j<3  ) {
                         g.setColor(Color.gray);
-                        g.fillRect(  2 * spacing + i * boxWidth(),
-                                2 * spacing + j * boxHeight ()+ topMargin,
+                        g.fillRect(  2*spacing + i * boxWidth(),
+                                boxHeight()/2 + j * boxHeight (),
                                 boxWidth ()- 2 * spacing,
                                 boxHeight ()- 2 * spacing);
                     }
                     else if (i>5 && i<9 && j<3 ) {
                         g.setColor(Color.gray);
-                        g.fillRect(2 * spacing + i * boxWidth(),
-                                2 * spacing + j * boxHeight() + 50,
-                                boxWidth() - 2 * spacing,
-                                boxHeight() - 2 * spacing);
+                        g.fillRect(2*spacing + i*boxWidth(),
+                                boxHeight()/2 + j*boxHeight (),
+                                boxWidth() - 2*spacing,
+                                boxHeight() - 2*spacing);
                     }
                     else if (i>2 && i<6 && j>2 && j<6  ) {
                         g.setColor(Color.gray);
-                        g.fillRect(2 * spacing + i * boxWidth(), 2 * spacing + j * boxHeight() + 50, boxWidth() - 2 * spacing, boxHeight() - 2 * spacing);
+                        g.fillRect(2*spacing + i*boxWidth(),
+                                boxHeight()/2 + j*boxHeight (),
+                                boxWidth() - 2*spacing,
+                                boxHeight() - 2*spacing);
                     }
                     else if ( i<3 && j>5 && j<9  ) {
                         g.setColor(Color.gray);
-                        g.fillRect(2 * spacing + i * boxWidth(), 2 * spacing + j * boxHeight() + 50, boxWidth() - 2 * spacing, boxHeight() - 2 * spacing);
+                        g.fillRect(2 * spacing + i * boxWidth(),
+                                boxHeight()/2 + j * boxHeight (),
+                                boxWidth() - 2 * spacing,
+                                boxHeight() - 2 * spacing);
                     }
                     else if (i>5 && i<9 && j>5 && j<9  ) {
                         g.setColor(Color.gray);
-                        g.fillRect(2 * spacing + i * boxWidth(), 2 * spacing + j * boxHeight() + 50, boxWidth() - 2 * spacing, boxHeight()- 2 * spacing);
+                        g.fillRect(2 * spacing + i * boxWidth(),
+                                boxHeight()/2 + j * boxHeight (),
+                                boxWidth() - 2 * spacing,
+                                boxHeight()- 2 * spacing);
+                    }else if(j == 10){
+                        g.setColor(Color.orange);
+                        g.fillRect(2 * spacing + i * boxWidth(),
+                                boxHeight()/2 + j * boxHeight (),
+                                boxWidth() - 2 * spacing,
+                                boxHeight()- 2 * spacing);
                     }
                     else
                     {
                         g.setColor(LightSteelBlue);
-                        g.fillRect(2*spacing +i*boxWidth(), 2*spacing+j*boxHeight()+50, boxWidth() - 2*spacing, boxHeight() - 2*spacing);
+                        g.fillRect(2*spacing +i*boxWidth(),
+                                boxHeight()/2 + j * boxHeight (),
+                                boxWidth() - 2*spacing,
+                                boxHeight() - 2*spacing);
                     }
+
                 }
             }
             for (int i = 0; i <9; i++){
                 for (int j = 0; j <9; j++){
-                    //if (hiddenMatrix[i][j] ==1){
+                    if (hiddenMatrix[i][j] ==1){
                         g.setColor(Color.white);
                         g.setFont(new Font("Tahoma", Font.BOLD, boxHeight()));
-                        g.drawString(String.valueOf(boardMatrix[i][j]), 3 * spacing + boxWidth() / 4 + i * (boxWidth()),  90-30  + boxHeight() + (j*boxHeight() -3*spacing));
-                    //}
+                    g.drawString(String.valueOf(boardMatrix[i][j]),
+                            boxWidth()/2 -3*spacing + i * (boxWidth()),
+                            3*boxHeight()/2 + (j*boxHeight() -3*spacing));
+                    }
 
                 }
             }
