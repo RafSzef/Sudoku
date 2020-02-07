@@ -1,5 +1,4 @@
 public class Main implements Runnable{
-    Solver solver = new Solver();
     GUI gui = new GUI();
 
     public static void main(String[] args) throws InterruptedException {
@@ -8,8 +7,6 @@ public class Main implements Runnable{
         solvThead.join();
         new Thread(new Main()).start();
     }
-
-
 
     public void run() {
 

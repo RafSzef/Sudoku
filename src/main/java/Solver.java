@@ -105,7 +105,7 @@ public class Solver implements Runnable{
     /**
      * Method used to fill empty sudoku or solve existing sudoku. It iterates through matrix.
      * If value of matrix is equal to 0 it picks random value between 1-9 and check if it appears in this row, column and box.
-     * Number is inserted into matrix only if number is unique in row, column and box then we backtrack recursively.
+     * ChosenNumber is inserted into matrix only if number is unique in row, column and box then we backtrack recursively.
      * If number is not a solution we insert 0 in matrix then try another number.
      *
      * Disclaimer:
@@ -158,6 +158,14 @@ public class Solver implements Runnable{
                 shuffleFirstRow();
                 fillFirstLine();
                 solve();
+                for (int row = 0; row < 9; row++) {
+                    for (int col = 0; col < 9; col++) {
+                        if (boardMatrix[row][col] == 0){
+                            System.out.println("Got empty matrix, restarting.");
+                            run();
+                        }
+                    }
+                }
                 finalMatrix = getBoardMatrix();
             }
         }catch (Exception e){
@@ -171,6 +179,7 @@ public class Solver implements Runnable{
  */
 class myException extends Exception{
     myException(Exception e){
+        System.out.println("Exception while running Solver. New instance of Solver created.");
         System.err.println(e);
         Solver solver = new Solver();
         solver.run();
