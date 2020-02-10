@@ -152,6 +152,10 @@ public class Solver implements Runnable{
      * Repeats itself until sudoku is solved. Each time it can't be solved changes first row and starts again.
      * In case of error prints error then creates new Solver object and retries run() method.
      */
+
+    public void reset() {
+        run();
+    }
     public void run() {
         try {
             while (!solve()) {

@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -10,6 +11,8 @@ import java.util.Random;
  */
 public class GUI extends JFrame {
 
+    public boolean isFinished = false;
+    public boolean readyToReset = false;
     // mouse location at startup
     public int mouseX = -100;
     public int mouseY = -100;
@@ -20,13 +23,19 @@ public class GUI extends JFrame {
     private int bottomMargin = this.getHeight()/11;
     //
     int number = -1;
-
-
+    Date dateAtStart = new Date();
+    int sec = 0;
+    int counter =0;
+    void addToCounter (){
+        counter ++;
+    }
+    int getCounter (){
+        return counter;
+    }
 
     private int[][] matrix = new int[9][9];
     private int[][] hiddenMatrix = new int[9][9];
     private int[][] inputMatrix = new int[9][9];
-    private int[][] secondMatrix = new int [9][9];
 
     public void getMatrix(int[][] matrix){
             this.matrix=matrix;
@@ -41,6 +50,7 @@ public class GUI extends JFrame {
             for (int j =0; j<9 ;j++) {
                 if (rand.nextInt(100) < 40){
                     hiddenMatrix[i][j] = 1;
+                    addToCounter();
                 }
             }
         }
@@ -55,6 +65,7 @@ public class GUI extends JFrame {
      */
     public GUI ()
     {
+
         // JFrame parameters
         this.setTitle("Sudoku (:");
         this.setSize(1286, 829);
@@ -63,12 +74,7 @@ public class GUI extends JFrame {
         this.setVisible(true);
 
         setHiddenMatrix();
-
-
-//        System.out.println(topMargin);
-//        System.out.println(bottomMargin);
-//        System.out.println(boxWidth());
-//        System.out.println(boxHeight());
+        System.out.println("revealed numbers : " + getCounter());
 
         // ContentPane
         Board board = new Board();
@@ -79,6 +85,14 @@ public class GUI extends JFrame {
         // Mouse Listener
         Click click = new Click();
         this.addMouseListener(click);
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+               if (e.getKeyCode() == KeyEvent.VK_R ){
+                   isFinished = true;
+               }
+            }
+        });
 
 
     }
@@ -187,7 +201,56 @@ public class GUI extends JFrame {
             // paint digits
             paintLabels(g);
             paintInputMatrix(g);
+            paintTopUtilityButtons(g);
+            printTimer(g);
+
+            int count =0;
+            for (int i =0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (hiddenMatrix[i][j] == 1){
+                        count ++;
+                        if (count == 81){
+                            System.out.println(count + " KonieC !");
+                            isFinished = true;
+                        }
+                    }
+                }
+            } count = 0;
+
+
         } // paintComponent END
+    }
+
+    public int countShownNumbers (){
+        int tmpCount =0;
+        for (int i =0; i < 9 ; i++){
+            for (int j = 0; j < 9; j++){
+                if (hiddenMatrix[i][j] == 1){
+                    tmpCount++;
+                }
+            }
+        }
+        return tmpCount;
+    }
+
+
+
+    public void printTimer (Graphics g)
+    {
+        sec = (int) ((new Date().getTime() - dateAtStart.getTime())/1000);
+        g.setColor(Color.black);
+        g.fillRect(this.getWidth() - boxWidth() -spacing  ,
+                    spacing ,
+                    boxWidth() ,
+                    boxHeight()/2) ;
+        g.setColor(Color.white);
+        if (sec <= 10) {
+            g.drawString("00" + Integer.toString(sec), this.getWidth() - boxWidth() , boxHeight() / 2);
+        } else  if (sec <= 100) {
+            g.drawString("0" + Integer.toString(sec), this.getWidth() - boxWidth(), boxHeight() / 2);
+        } else {
+            g.drawString( Integer.toString(sec), this.getWidth() - boxWidth(), boxHeight() / 2);
+        }
     }
 
     /**
@@ -211,6 +274,7 @@ public class GUI extends JFrame {
                 } else if (hiddenMatrix[i][j] ==1){
                     if (matrix[i][j] == number){
                         g.setColor(Color.yellow);
+                        counter ++;
                     } else {
                         g.setColor(Color.white);
                     }
@@ -223,7 +287,20 @@ public class GUI extends JFrame {
             } // FOR J END
         } // FOR I END
     }   // paintLabels END
+/*
+    public boolean gameFinished (int i, int j){
+        for (int i =0; i< 9; i++){
+            for (int j =0; j<9; j++){
+                if (matrix[i][j] == inputMatrix[i][j]){
+                    if (gameFinished())
+                        System.out.println("Game finished !");
+                        return true;
+                }
+            }
+        }return false;
+    }
 
+ */
     /**
      * Method used to show input on grid.
      * If InputMatrix[i][j] value is different than matrix [i][j] box changes color to red.
@@ -257,6 +334,16 @@ public class GUI extends JFrame {
         } // FOR I END
     } // paintInputMatrix END
 
+    public void paintTopUtilityButtons(Graphics g){
+        g.setColor(Color.gray);
+        g.drawRect(spacing *2,
+                spacing *2,
+                boxWidth()*3/2,
+                boxHeight()/2);
+        g.setColor(Color.white);
+        g.setFont(new Font("Tacoma", Font.BOLD, boxHeight()/2));
+        g.drawString("NEW GAME", spacing * 4, boxHeight()/2 + spacing);
+    }
     /**
      * Mouse motion adapter used to get mouse cursor position.
      */
@@ -271,20 +358,28 @@ public class GUI extends JFrame {
 
     /**
      * Mouse click adapter.
-     * If clicked on function buttons changes number to corresponding value.
-     * If clicked on grid sets new value to inputMatrix via setInputMatrix()
+     * If pressed on function buttons changes number to corresponding value.
+     * If pressed on grid sets new value to inputMatrix via setInputMatrix()
      */
     public class Click extends MouseAdapter {
         public void mousePressed(MouseEvent mouseEvent) {
+            int progress = countShownNumbers() + counter;
+            System.out.println("Progress : " + progress + "/81 " + progress/81 + "%");
             if (inFunctionBoxX() != -1){
                 number = inFunctionBoxX() +1;
             }
             if (inBoxX() !=-1 && inBoxY() != -1){
-                setInputMatrix(inBoxX(), inBoxY(), number);
-                System.out.println("Mouse clicked in box [" + inBoxX() +", " + inBoxY() + "]");
-
+                if (mouseEvent.getButton() == MouseEvent.BUTTON3)
+                {
+                    setInputMatrix(inBoxX(), inBoxY(), 0);
+                    System.out.println("rmouse button");
+                }else {
+                    setInputMatrix(inBoxX(), inBoxY(), number);
+                    System.out.println("Mouse clicked in box [" + inBoxX() + ", " + inBoxY() + "]");
+                }
 
             }else System.out.println("Mouse clicked outside of any boxes");
+
         }
     }
 
@@ -328,5 +423,17 @@ public class GUI extends JFrame {
         return -1;
     }
 
-
+    class NumberCounter {
+        int[] countArray = new int[9];
+        public void addNumber(int position){
+            countArray[position-1] ++;
+        }
+        public void removeNumber(int position){
+            countArray[position-1] --;
+        }
+        public int getNumber(int number){
+            return Integer.valueOf(countArray[number-1]);
+        }
+    }
 }
+
