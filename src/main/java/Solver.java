@@ -32,7 +32,7 @@ public class Solver implements Runnable{
      * Uses Collections shuffle.
      * @see Collections
      */
-    private void shuffleFirstRow () {
+    public void shuffleFirstRow () {
         List<Integer> intFirstRow = Arrays.asList(firstLine);
         Collections.shuffle(intFirstRow);
         intFirstRow.toArray(firstLine);
@@ -42,7 +42,7 @@ public class Solver implements Runnable{
     /**
      * Method used to fill first row of matrix.
      */
-    private void fillFirstLine () {
+    public void fillFirstLine () {
         for (int i=0; i<9; i++)
             boardMatrix[i][0] = firstLine[i];
 
@@ -153,9 +153,6 @@ public class Solver implements Runnable{
      * In case of error prints error then creates new Solver object and retries run() method.
      */
 
-    public void reset() {
-        run();
-    }
     public void run() {
         try {
             while (!solve()) {

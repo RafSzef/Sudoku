@@ -6,10 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Solver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GUI$Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GUI$Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GUI$Click.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GUI$Click.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GUI$Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GUI$Move.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +112,7 @@
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_OTHER_BRANCHES" value="true" />
     <option name="COLUMN_ORDER">
       <list>
         <option value="0" />
@@ -187,51 +184,51 @@
     </state>
     <state x="421" y="97" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1579887652069" />
     <state x="632" y="148" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581343962244" />
-    <state width="1878" height="282" key="GridCell.Tab.0.bottom" timestamp="1581349604754">
+    <state width="1878" height="282" key="GridCell.Tab.0.bottom" timestamp="1581448947359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579887659597" />
-    <state width="1878" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581349604754" />
-    <state width="1878" height="282" key="GridCell.Tab.0.center" timestamp="1581349604754">
+    <state width="1878" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581448947359" />
+    <state width="1878" height="282" key="GridCell.Tab.0.center" timestamp="1581448947359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579887659597" />
-    <state width="1878" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581349604754" />
-    <state width="1878" height="282" key="GridCell.Tab.0.left" timestamp="1581349604754">
+    <state width="1878" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581448947359" />
+    <state width="1878" height="282" key="GridCell.Tab.0.left" timestamp="1581448947359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579887659597" />
-    <state width="1878" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581349604754" />
-    <state width="1878" height="282" key="GridCell.Tab.0.right" timestamp="1581349604754">
+    <state width="1878" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581448947359" />
+    <state width="1878" height="282" key="GridCell.Tab.0.right" timestamp="1581448947359">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579887659597" />
-    <state width="1878" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581349604754" />
-    <state width="1878" height="348" key="GridCell.Tab.1.bottom" timestamp="1581348588687">
+    <state width="1878" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581448947359" />
+    <state width="1878" height="348" key="GridCell.Tab.1.bottom" timestamp="1581424560945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581348588687" />
-    <state width="1878" height="348" key="GridCell.Tab.1.center" timestamp="1581348588687">
+    <state width="1878" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581424560945" />
+    <state width="1878" height="348" key="GridCell.Tab.1.center" timestamp="1581424560945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581348588687" />
-    <state width="1878" height="348" key="GridCell.Tab.1.left" timestamp="1581348588687">
+    <state width="1878" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581424560945" />
+    <state width="1878" height="348" key="GridCell.Tab.1.left" timestamp="1581424560945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581348588687" />
-    <state width="1878" height="348" key="GridCell.Tab.1.right" timestamp="1581348588687">
+    <state width="1878" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581424560945" />
+    <state width="1878" height="348" key="GridCell.Tab.1.right" timestamp="1581424560945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581348588687" />
+    <state width="1878" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581424560945" />
     <state x="0" y="164" key="SettingsEditor" timestamp="1580902633767">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580902633767" />
-    <state x="661" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1581322975874">
+    <state x="661" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1581415299076">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="441" y="226" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1579881866184" />
-    <state x="661" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581322975874" />
+    <state x="661" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581415299076" />
     <state x="768" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580228920947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -252,17 +249,6 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="226" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581078224038" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Solver.java</url>
-          <line>159</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Sudoku$Main.ic" NAME="Main Coverage Results" MODIFIED="1580228979145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
