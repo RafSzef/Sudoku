@@ -1,4 +1,5 @@
 public class Main implements Runnable{
+    // Create gui object
     GUI gui = new GUI();
 
     public static void main(String[] args) throws InterruptedException {
@@ -6,12 +7,8 @@ public class Main implements Runnable{
     }
 
     public void run() {
-
-        int[][] matrix = Solver.getFinalMatrix();
-        gui.getMatrix(matrix);
         while (true)
             gui.repaint();
-
     }
 }
 

@@ -14,7 +14,6 @@ import java.util.Random;
 
 public class Solver implements Runnable{
 
-
     private Integer[] firstLine = {1,2,3,4,5,6,7,8,9};
     int[][] boardMatrix = new int[9][9];
     Random rand = new Random();
@@ -32,7 +31,7 @@ public class Solver implements Runnable{
      * Uses Collections shuffle.
      * @see Collections
      */
-    public void shuffleFirstRow () {
+    private void shuffleFirstRow() {
         List<Integer> intFirstRow = Arrays.asList(firstLine);
         Collections.shuffle(intFirstRow);
         intFirstRow.toArray(firstLine);
@@ -113,7 +112,7 @@ public class Solver implements Runnable{
      * it will select ie. 9 and stop after 1 iteration.
      * @return false when can't solve sudoku and true when sudoku is solved
      */
-    public boolean solve() {
+    private boolean solve() {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 // we search an empty cell
