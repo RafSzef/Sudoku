@@ -24,7 +24,7 @@ public class GUI extends JFrame {
     int number = -1;
     private int correctNumbers = 0;
     private int numberOfErrors = 0;
-    Date dateAtStart = new Date();
+    Date dateAtStart ;
     Date dateAtEnd;
     int sec = 0;
     int difficultyVar =2;
@@ -76,12 +76,14 @@ public class GUI extends JFrame {
     /**
      *
      */
-    boolean isFinished (){
+    boolean finished = false;
+    void isFinished (){
         if (correctNumbers == 81) {
             dateAtEnd = new Date();
             System.out.println("Finish !");
-            return true;
-        } else return false;
+            finished = true;
+
+        }
     }
 
     private void setHiddenMatrix (){
@@ -96,6 +98,9 @@ public class GUI extends JFrame {
                 }
             }
         }
+    }
+    class MatriFunction {
+        
     }
     private void clearHiddenMatrix (){
         for (int i =0; i < 9; i++) {
@@ -123,6 +128,7 @@ public class GUI extends JFrame {
         getMatrix(Solver.getFinalMatrix());
         setHiddenMatrix();
         dateAtStart = new Date();
+        finished = false;
     }
     public void setInputMatrix (int x, int y, int number){
         inputMatrix[x][y] = number;
@@ -156,8 +162,7 @@ public class GUI extends JFrame {
         // Key Adapter
         Keys keys = new Keys();
         this.addKeyListener(keys);
-
-
+        isFinished();
     }
 
     public int boxWidth(){
@@ -266,35 +271,10 @@ public class GUI extends JFrame {
             // paint digits
             paintLabels(g);
             paintInputMatrix(g);
-
             printTimer(g);
         } // paintComponent END
     }
 
-    public void printTimer (Graphics g)
-    {
-        if (isFinished()) {
-            sec = (int) ((dateAtEnd.getTime() - dateAtStart.getTime())/1000);
-        } else{
-            sec = (int) ((new Date().getTime() - dateAtStart.getTime())/1000);
-        }
-
-        g.setColor(Color.black);
-        g.fillRect(this.getWidth() - boxWidth() -spacing  ,
-                    spacing ,
-                    boxWidth() ,
-                    boxHeight()/2) ;
-        g.setColor(Color.white);
-        g.setFont(new Font("Tacoma", Font.BOLD, 40));
-        if (sec < 10) {
-            g.drawString("00" + Integer.toString(sec), this.getWidth() - boxWidth(), boxHeight() / 2);
-        } else if (sec < 100) {
-            g.drawString("0" + Integer.toString(sec), this.getWidth() - boxWidth(), boxHeight() / 2);
-        } else {
-            g.drawString(Integer.toString(sec), this.getWidth() - boxWidth(), boxHeight() / 2);
-        }
-
-    }
 
     /**
      * Method used to print numbers on function buttons ( j == 9) and on grid.
@@ -377,15 +357,39 @@ public class GUI extends JFrame {
         g.drawString("Complete : " + correctNumbers + "/81", 500, 50);
     }
 
+    public void printTimer (Graphics g)
+    {
+        if (!finished){
+            sec = (int) ((new Date().getTime() - dateAtStart.getTime())/1000);
+        }
+
+        if (finished) {
+            sec = (int) ((dateAtEnd.getTime() - dateAtStart.getTime())/1000);
+        }
+
+        g.setColor(Color.black);
+        g.fillRect(this.getWidth() - boxWidth() -spacing  ,
+                spacing ,
+                boxWidth() ,
+                boxHeight()/2) ;
+        g.setColor(Color.white);
+        g.setFont(new Font("Tacoma", Font.BOLD, 40));
+        if (sec < 10) {
+            g.drawString("00" + sec, this.getWidth() - boxWidth(), boxHeight() / 2);
+        } else if (sec < 100) {
+            g.drawString("0" + sec, this.getWidth() - boxWidth(), boxHeight() / 2);
+        } else {
+            g.drawString(Integer.toString(sec), this.getWidth() - boxWidth(), boxHeight() / 2);
+        }
+
+    }
     /**
      * Mouse motion adapter used to get mouse cursor position.
      */
-    public class Move extends MouseMotionAdapter {
+    private class Move extends MouseMotionAdapter {
         public void mouseMoved(MouseEvent e) {
             mouseX = e.getX();
             mouseY = e.getY();
-
-            //System.out.println(mouseX + " " + mouseY);
         }
     }
 
@@ -394,54 +398,46 @@ public class GUI extends JFrame {
      * If pressed on function buttons changes number to corresponding value.
      * If pressed on grid sets new value to inputMatrix via setInputMatrix()
      */
-    public class Click extends MouseAdapter {
+    private class Click extends MouseAdapter {
         public void mousePressed(MouseEvent mouseEvent) {
-            if (inShowMistakesBox() != -1){
-             hideMyMistakesPlease = !hideMyMistakesPlease;
-            }
-            if (inNewGameBox() != -1){
-                resetIT();
-                System.out.println("Reset invoked by mouse click");
-            }
+            if (inShowMistakesBox() != -1) hideMyMistakesPlease = !hideMyMistakesPlease;
+            if (inFunctionBox() != -1) number = inFunctionBox() + 1;
+            if (inNewGameBox() != -1) resetIT();
             if (inDifficultyBox() != -1){
-                System.out.println("Difficulty setting changed via mouse click");
                 difficultyVar++;
                 if (difficultyVar == 5) difficultyVar=1;
                 difficultySetting(difficultyVar);
             }
-            if (inFunctionBoxX() != -1){
-                number = inFunctionBoxX() +1;
-            }
-            if (inBoxX() !=-1 && inBoxY() != -1){
-                if (mouseEvent.getButton() == MouseEvent.BUTTON3)
-                {
-                    setInputMatrix(inBoxX(), inBoxY(), 0);
-                    System.out.println("rmouse button");
+            if (inBoxX() !=-1 && inBoxY() != -1 && number != 0){
+                int x = inBoxX();
+                int y = inBoxY();
+                if (mouseEvent.getButton() == MouseEvent.BUTTON3) {
+                    if (inputMatrix[x][y] != matrix[x][y] && inputMatrix[x][y] != 0 && hiddenMatrix[x][y] != 1) {
+                        setInputMatrix(inBoxX(), inBoxY(), 0);
+                    }
                 }else {
-                    int tmp = inputMatrix[inBoxX()][inBoxY()];
-                    setInputMatrix(inBoxX(), inBoxY(), number);
-                    if (inputMatrix[inBoxX()][inBoxY()] == matrix[inBoxX()][inBoxY()] && tmp != matrix[inBoxX()][inBoxY()]){
+                    int tmp = inputMatrix[x][y];
+                    setInputMatrix(x, y, number);
+                    if (inputMatrix[x][y] == matrix[x][y] && tmp != matrix[x][y] && hiddenMatrix[x][y] !=1) {
                         correctNumbers ++;
                         numberCounter.addNumber(number);
-                        System.out.println("correct numbers: " + correctNumbers + "/81");
-                    } else if (tmp == matrix[inBoxX()][inBoxY()] && inputMatrix[inBoxX()][inBoxY()] != matrix[inBoxX()][inBoxY()]) {
+                    } else if (tmp == matrix[x][y] && inputMatrix[x][y] != matrix[x][y]) {
                         correctNumbers --;
-                        numberCounter.removeNumber(number);
-                        System.out.println("correct numbers: " + correctNumbers + "/81");
+                        numberCounter.removeNumber(tmp);
                         numberOfErrors++;
-                        System.out.println("Mistakes : " + numberOfErrors);
                     }else {
                         numberOfErrors ++;
-                        System.out.println("Mistakes : " + numberOfErrors);
                     }
-                   // System.out.println("Mouse clicked in box [" + inBoxX() + ", " + inBoxY() + "]");
                 }
-
-            }else System.out.println("Mouse clicked outside of any boxes");
-
+            }
+            isFinished();
         }
     }
-    public class Keys extends KeyAdapter {
+
+    /**
+     * My Key Adapter. Nested class.
+     */
+    class Keys extends KeyAdapter {
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_R ){
                 resetIT();
@@ -471,15 +467,21 @@ public class GUI extends JFrame {
         if (mouseX > 500 && mouseX < 590 && mouseY > 40 && mouseY < 55) return 1;
         return -1;
     }
-    int inNewGameBox (){
+    private int inNewGameBox (){
         if (mouseX >= 4 * spacing && mouseX <= 245 && mouseY >= 40 && mouseY <= 75) return 1;
         return -1;
     }
-    int inDifficultyBox (){
+    private int inDifficultyBox (){
         if (mouseX >= 268 && mouseX <= 470 && mouseY >= 40 && mouseY <= 75) return 1;
         return -1;
     }
-    public int inBoxX () {
+
+    /**
+     * Is the mouse cursor in one of the grid boxes?
+     * if so returns the field number on the x axis where the mouse is located.
+     * @return -1 if outside any box. 1-9 if in the box.
+     */
+    private int inBoxX() {
         for (int i =0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (    mouseX >= 2 * spacing + i * boxWidth()+ spacing
@@ -493,7 +495,12 @@ public class GUI extends JFrame {
         return -1;
     }
 
-    public int inBoxY () {
+    /**
+     * Is the mouse cursor in one of the grid boxes?
+     * if so returns the field number on the y axis where the mouse is located.
+     * @return -1 if outside any box. 1-9 if in the box.
+     */
+    private int inBoxY () {
         for (int i =0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (    mouseX >= 2 * spacing + i * boxWidth() + spacing
@@ -507,7 +514,12 @@ public class GUI extends JFrame {
         return -1;
     }
 
-    public int inFunctionBoxX() {
+    /**
+     * Is the mouse cursor in one of the function boxes?
+     * if so returns the field number on the box where the mouse is located.
+     * @return number of box or -1 if outside function box.
+     */
+    private int inFunctionBox() {
         for (int i =0; i < 9; i++) {
                 if (mouseX >= 2*spacing+i*boxWidth()+spacing
                         && mouseX <i*boxWidth()+boxWidth() +spacing
@@ -517,34 +529,6 @@ public class GUI extends JFrame {
                 }
             }
         return -1;
-    }
-
-    class NumberCounter {
-        int[] countArray = new int[9];
-        public void clear (){
-            for (int i =0; i <countArray.length; i++){
-                countArray[i] =0;
-            }
-        }
-        public void addNumber(int position){
-            if (position >0) {
-                countArray[position - 1]++;
-                System.out.println("Added in position" + (position) + " value is : " + countArray[position - 1]);
-            }
-        }
-        public void removeNumber(int position){
-            if (position >0) {
-                countArray[position - 1]--;
-                System.out.println("Removed in position" + (position) + " value is : " + countArray[position - 1]);
-            }
-        }
-        public int getNumber(int position){
-           // System.out.println("Returning arr [" + number + "] value is " + countArray[position]);
-            if (position >=0){
-                return (int)(countArray[position]);
-            }
-            return 0;
-        }
     }
 }
 
