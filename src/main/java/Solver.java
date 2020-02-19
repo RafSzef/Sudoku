@@ -10,6 +10,8 @@ import java.util.Random;
  * Due to this better wait until Solver finish its work before redrawing GUI.
  * @see Random
  * @see Runnable
+ * @author Rafal Szefler
+ * @version 1.0.0
  */
 
 public class Solver implements Runnable{
@@ -41,7 +43,7 @@ public class Solver implements Runnable{
     /**
      * Method used to fill first row of matrix.
      */
-    public void fillFirstLine () {
+    private void fillFirstLine() {
         for (int i=0; i<9; i++)
             boardMatrix[i][0] = firstLine[i];
 
@@ -155,18 +157,18 @@ public class Solver implements Runnable{
     public void run() {
         try {
             while (!solve()) {
-                shuffleFirstRow();
-                fillFirstLine();
-                solve();
+                shuffleFirstRow();              // shufles first row
+                fillFirstLine();                // sets numbers obtained from previous step to first row of 2D array
+                solve();                        // Solves sudoku
                 for (int row = 0; row < 9; row++) {
                     for (int col = 0; col < 9; col++) {
                         if (boardMatrix[row][col] == 0){
                             System.out.println("Got empty matrix, restarting.");
-                            run();
+                            run();              // when is not solved restarts run method
                         }
                     }
                 }
-                finalMatrix = getBoardMatrix();
+                finalMatrix = getBoardMatrix(); // if sudoku is solved pass good 2D matrix to finalMatrix
             }
         }catch (Exception e){
             new myException(e);
@@ -175,11 +177,12 @@ public class Solver implements Runnable{
 }
 
 /**
- *  Custom exception handler used to create new object and perform run() method.
+ *  Custom exception handler used to restart run method.
+ *  Not really catches any throwable but sits here for future uses.
  */
 class myException extends Exception{
     myException(Exception e){
-        System.out.println("Exception while running Solver. New instance of Solver created.");
+        System.out.println("Exception while running Solver. Restarting");
         System.err.println(e);
         Solver solver = new Solver();
         solver.run();
