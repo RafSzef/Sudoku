@@ -82,17 +82,17 @@ public class Functions {
                 difficultyColor = new Color(143, 188, 143);
                 break;
             case 2:
-                difficulty = 60;
+                difficulty = 65;
                 difficultyString = "EASY";
                 difficultyColor = new Color(46, 188, 53);
                 break;
             case 3:
-                difficulty = 40;
+                difficulty = 50;
                 difficultyString = "MEDIUM";
                 difficultyColor = new Color(35, 188, 179);
                 break;
             case 4:
-                difficulty = 20;
+                difficulty = 35;
                 difficultyString = "HARD";
                 difficultyColor = new Color(188, 75, 54);
                 break;

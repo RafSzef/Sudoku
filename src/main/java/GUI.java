@@ -60,7 +60,7 @@ public class GUI extends JFrame {
         this.setResizable(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
-        this.setMinimumSize(new Dimension(1000, 829));
+        this.setMinimumSize(new Dimension(1000, 629));
         // ContentPane
         Board board = new Board();
         this.setContentPane(board);
@@ -307,7 +307,7 @@ public class GUI extends JFrame {
                             g.setFont(new Font("Tacoma", Font.BOLD, boxHeight()));
                             g.drawString(String.valueOf(i + 1),
                                     boxWidth() / 2 - 3 * spacing + i * (boxWidth()),
-                                    3 * boxHeight() / 2 + j * boxHeight() + topMargin);
+                                    this.getHeight() - boxHeight()/3);
                         }
                     } else if (func.getHiddenMatrix(i,j) ==1){
                         if (func.getMatrix(i, j) == number){
