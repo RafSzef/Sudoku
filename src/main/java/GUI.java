@@ -364,11 +364,11 @@ public class GUI extends JFrame {
                     if (inputMatrix != matrix && inputMatrix != 0 && hiddenMatrix != 1) {
                         func.setInputMatrix(x, y, 0);
                     }
-                }else {
+                }else if (hiddenMatrix !=1){
                     int tmp = func.getInputMatrix(x, y);
                     func.setInputMatrix(x, y, number);
                     inputMatrix = func.getInputMatrix(x, y);
-                    if (inputMatrix == matrix && tmp != matrix && hiddenMatrix !=1) {
+                    if (inputMatrix == matrix && tmp != matrix) {
                         func.correctNumbers ++;
                         numberCounter.addNumber(number);
                     } else {
